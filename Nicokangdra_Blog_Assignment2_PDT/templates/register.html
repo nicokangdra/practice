@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}
+Log In
+{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+    <h2 style="text-align: center;">Registration</h2>
+    <div class="row-mb-3">
+        <label for="name" class="col-2 col-form-label">Name</label>
+        <div class="col-6">
+            <input type="text" name="Rname" class="form-control" required/>
+        </div>
+    </div>
+
+    <div class="row-mb-3">
+        <label for="username" class="col-2 col-form-label">Username</label>
+        <div class="col-6">
+            <input type="text" name="Rusername" class="form-control" required/>
+        </div>
+    </div>
+
+    <div class="row-mb-3">
+        <label for="password" class="col-2 col-form-label">Password</label>
+        <div class="col-6">
+            <input type="password" name="Rpassword" class="form-control" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"/>
+            <p>*Must at least 5 character that contain 1 Uppercase, 1 lowercase and 1 number</p>
+        </div>
+    </div>
+
+    <div class="row-mb-3">
+        <label for="passwordcon" class="col-2 col-form-label">Confirm Password</label>
+        <div class="col-6">
+            <input type="password" name="passwordcon" class="form-control" required/>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="col-6">
+            <input type="submit" value="Register" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+
+{% for message in get_flashed_messages() %}
+<h2>{{ message }}</h2>
+{% endfor %}
+
+{% endblock %}
