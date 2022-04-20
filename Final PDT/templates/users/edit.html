@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Users
+{% endblock %}
+
+{% block content %}
+<br>
+<form action="{{ url_for('edit_user', user_id=users[0]) }}" method="POST">
+    <h4>Username : {{ users[1] }} </h4>
+    <h4>User Type : {{ users[2] }}</h4>
+
+    <div class="row-mb-3">
+        <label for="pwnow" class="col-2 col-form-label">Current Password</label>
+        <div class="col-6">
+            <input type="password" name="pwnow" class="form-control" required/>
+        </div>
+    </div>
+
+    <div class="row-mb-3">
+        <label for="password" class="col-2 col-form-label">Change Password</label>
+        <div class="col-6">
+            <input type="password" name="Rpassword" class="form-control" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"/>
+            <p>*Must at least 5 character that contain 1 Uppercase, 1 lowercase and 1 number</p>
+        </div>
+    </div>
+
+    <div class="row-mb-3">
+        <label for="passwordcon" class="col-2 col-form-label">Confirm Password</label>
+        <div class="col-6">
+            <input type="password" name="passwordcon" class="form-control" required/>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-6">
+            <input type="submit" value="Change Password" class="btn btn-success" />
+        </div>
+    </div>
+</form>
+<br>
+
+{% for message in get_flashed_messages() %}
+<h2 style="color: red;">{{ message }}</h2>
+<br>
+{% endfor %}
+
+<div>
+    <a href="{{ url_for('list_categories') }}">Back to Users</a>
+</div>
+{% endblock %}
